@@ -54,6 +54,7 @@ jobs:
                  [[ ${{ inputs.minimal }} == yes ]] && runner_tags=ubuntu-latest
                  [[ $j == arm64 ]]                   && runner_tags=aarch64
                  [[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
+                 [[ $j == armhf ]]                   && runner_tags=small
                  
                  
                  for k in ${desktops[@]}; do
