@@ -47,14 +47,18 @@ jobs:
               # Cycle desktops
               [[ "${{ inputs.desktop }}" == yes ]] && desktops=($(find -L config/desktop/sid/environments/ -name support -exec grep -l 'supported' {} \; | rev | cut -d '/' -f 2 | rev))
               for j in ${arch[@]}; do
+              
                  runner_tags=qemu
+                 variant=${{ inputs.variant }}
                  
-                 # runners optimisations
+                 # exceptions and runners optimisations
                  #[[ ${{ inputs.desktop }} == no ]]  && runner_tags=small
                  [[ ${{ inputs.minimal }} == yes ]] && runner_tags=ubuntu-latest
                  [[ $j == arm64 ]]                   && runner_tags=aarch64
                  [[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
-                 #[[ $j == armhf ]]                   && runner_tags=small
+                 
+                 # we don't have chromium and many other packages yet
+                 [[ $j == riscv64 ]]                   && variant="x"
                  
                  
                  for k in ${desktops[@]}; do
