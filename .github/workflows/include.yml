@@ -62,7 +62,8 @@ jobs:
                  
                  
                  for k in ${desktops[@]}; do
-                 if ! grep -q $j config/distributions/${i}/arhitectures; then continue; fi
+                 if ! grep -q $j config/distributions/${i}/architectures; then continue; fi
+                 if ! grep -q $j config/desktop/${i}/environments/${k}/architectures; then continue; fi
                  echo "{\"release\":\"${i}\",\"desktop\":\"$k\",\"minimal\":\"${{ inputs.minimal }}\",\"variant\":\"${variant}\",\"arch\":\"$j\",\"runner_tags\":\"$runner_tags\"}"
                  done
               done
