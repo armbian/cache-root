@@ -55,6 +55,7 @@ jobs:
                  #[[ ${{ inputs.desktop }} == no ]]  && runner_tags=small
                  [[ ${{ inputs.minimal }} == yes ]] && runner_tags=ubuntu-latest
                  [[ $j == arm64 ]]                   && runner_tags=aarch64
+                 [[ $j == armhf ]]                   && runner_tags=aarch64
                  [[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
                  
                  # we don't have chromium and many other packages yet
