@@ -2,6 +2,12 @@ name: Rootfs
 on:
 
   workflow_dispatch:
+    inputs:
+      branch:
+        type: choice
+        description: 'Branch'
+        default: 'main'
+
   workflow_call:
   schedule:
     - cron: '0 3 * * *' # Scheduled runs every day at 3am UTC
@@ -31,6 +37,7 @@ jobs:
       minimal: 'yes'
       desktop: 'no'
       variant: ''
+      branch: "${{ github.event.inputs.branch || 'main' }}"
 
   Server:
 
@@ -43,6 +50,7 @@ jobs:
       minimal: 'no'
       desktop: 'no'
       variant: ''
+      branch: "${{ github.event.inputs.branch || 'main' }}"
 
   GUI1:
 
@@ -55,6 +63,7 @@ jobs:
       minimal: 'no'
       desktop: 'yes'
       variant: 'x'
+      branch: "${{ github.event.inputs.branch || 'main' }}"
       
   GUI2:
 
@@ -67,6 +76,7 @@ jobs:
       minimal: 'no'
       desktop: 'yes'
       variant: '3dsupport'
+      branch: "${{ github.event.inputs.branch || 'main' }}"
 
   GUI3:
 
@@ -79,6 +89,7 @@ jobs:
       minimal: 'no'
       desktop: 'yes'
       variant: '3dsupport browsers'
+      branch: "${{ github.event.inputs.branch || 'main' }}"
 
   GUI4:
 
@@ -91,6 +102,7 @@ jobs:
       minimal: 'no'
       desktop: 'yes'
       variant: '3dsupport browsers chat desktop_tools editors email internet multimedia office programming remote_desktop'    
+      branch: "${{ github.event.inputs.branch || 'main' }}"
       
   GUI5:
 
@@ -103,3 +115,4 @@ jobs:
       minimal: 'no'
       desktop: 'yes'
       variant: 'browsers chat desktop_tools editors email internet multimedia office programming remote_desktop'
+      branch: "${{ github.event.inputs.branch || 'main' }}"
