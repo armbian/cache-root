@@ -117,6 +117,9 @@ jobs:
       - name: Create rootfs ${{env.RELEASE}}:${{env.ARCH}} (variant ${{env.VARIANT}}) (desktop ${{env.DESKTOP}})
         id: rootfs
         run: |
+        
+          # clean rootfs folder. This is needed when we use self-hosted runners. This needs to be solved better way, so this is just a workaround
+          [[ -d cache/rootfs ]] && rm -rf cache/rootfs/*
          
           DESKTOP_ENVIRONMENT="${{env.DESKTOP}}"
           BUILD_DESKTOP="yes"
