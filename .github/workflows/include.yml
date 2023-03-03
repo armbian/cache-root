@@ -59,17 +59,12 @@ jobs:
                  #[[ ${{ inputs.desktop }} == no ]]  && runner_tags=small
                  [[ ${{ inputs.minimal }} == yes ]] && runner_tags=ubuntu-latest
                  [[ $j == arm64 ]]                   && runner_tags=aarch64
-                 [[ $j == armhf ]]                   && runner_tags=aarch64
-                 [[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
+                 #[[ $j == armhf ]]                   && runner_tags=aarch64
+                 #[[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
                  
                  # we don't have chromium and many other packages yet
                  [[ $j == riscv64 ]]                   && variant="x"
                  
-
-                 # lets try on public runners only
-                 runner_tags=ubuntu-latest
-
-
                  for k in ${desktops[@]}; do
                  if ! grep -q $j config/distributions/${i}/architectures; then continue; fi
                  if [[ ${k} != "none" ]]; then
