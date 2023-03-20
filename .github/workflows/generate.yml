@@ -1,6 +1,7 @@
 name: Rootfs
 on:
-
+  repository_dispatch:
+    types: ["armbian"]
   workflow_dispatch:
     inputs:
       branch:
