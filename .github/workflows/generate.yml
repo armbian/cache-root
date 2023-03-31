@@ -62,7 +62,7 @@ jobs:
 
       minimal: 'no'
       desktop: 'yes'
-      variant: 'x'
+      variant: ''
       branch: "${{ github.event.inputs.branch || 'main' }}"
       
   GUI2:
