@@ -63,7 +63,7 @@ jobs:
                  #[[ $j == amd64 ]]                   && runner_tags=ubuntu-latest
                  
                  # we don't have chromium and many other packages yet
-                 [[ $j == riscv64 ]]                   && variant="x"
+                 [[ $j == riscv64 ]]                   && variant=""
                  
                  for k in ${desktops[@]}; do
                  if ! grep -q $j config/distributions/${i}/architectures; then continue; fi
