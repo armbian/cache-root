@@ -110,7 +110,8 @@ jobs:
         uses: actions/checkout@v3 # We don't need to clone git, really. A wget would suffice for GH-hosted runners. But using clone is better for Igor-hosted runners.
         with:
           repository: armbian/build #${{ github.repository_owner }}/armbian-build
-          ref:  ${{ inputs.branch }}
+          #ref:  ${{ inputs.branch }}
+          ref:  custom-mirror
           fetch-depth: 1
           clean: false # true is default. it *will* delete the hosts /dev if mounted inside.
 
@@ -124,4 +125,4 @@ jobs:
           DESKTOP_ENVIRONMENT="${{env.DESKTOP}}"
           BUILD_DESKTOP="yes"
           [[ "${{env.DESKTOP}}" == none ]] && DESKTOP_ENVIRONMENT="" && BUILD_DESKTOP="no"
-          bash ./compile.sh rootfs BUILD_MINIMAL="${{ inputs.minimal }}" RELEASE="${{env.RELEASE}}" ARCH="${{env.ARCH}}" BUILD_DESKTOP="${BUILD_DESKTOP}" DESKTOP_APPGROUPS_SELECTED="${{env.VARIANT}}" DESKTOP_ENVIRONMENT="${DESKTOP_ENVIRONMENT}" DESKTOP_ENVIRONMENT_CONFIG_NAME=config_base BETA=yes SHARE_LOG=yes CUSTOM_UBUNTU_MIRROR_ARM64="ftp.tu-chemnitz.de/pub/linux/ubuntu-ports/" CUSTOM_UBUNTU_MIRROR="mirrors.dotsrc.org/ubuntu/"
+          bash ./compile.sh rootfs BUILD_MINIMAL="${{ inputs.minimal }}" RELEASE="${{env.RELEASE}}" ARCH="${{env.ARCH}}" BUILD_DESKTOP="${BUILD_DESKTOP}" DESKTOP_APPGROUPS_SELECTED="${{env.VARIANT}}" DESKTOP_ENVIRONMENT="${DESKTOP_ENVIRONMENT}" DESKTOP_ENVIRONMENT_CONFIG_NAME=config_base BETA=yes SHARE_LOG=yes CUSTOM_UBUNTU_MIRROR_PORTS="ftp.tu-chemnitz.de/pub/linux/ubuntu-ports/" CUSTOM_UBUNTU_MIRROR="mirrors.dotsrc.org/ubuntu/"
